@@ -121,7 +121,7 @@ function getCloseFood(request) {
   return retval;
 }
 
-function getFoodDirection(request) {
+function getFoodDirection(food, request) {
   const my_snake_x = request.you.body[0].x;
   const my_snake_y = request.you.body[0].y;
 
