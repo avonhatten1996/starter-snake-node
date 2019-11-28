@@ -147,20 +147,8 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
-  if (x > 10) {
-    return false;
-  }
-
-  if (x < 1) {
-    return false;
-  }
-
-  if (y < 1) {
-    return false;
-  }
-
-  if (y > 10) {
-    return false;
+  if(x > board.length || x < 1 || y > board.length || y < 1) {
+    return false
   }
 
   if (board[x][y] != '0' && board[x][y] != 'food') {
