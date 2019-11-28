@@ -29,7 +29,7 @@ app.post('/start', (request, response) => {
   var returnData = {
       color: "#00CC66",
       name: "Max Power",
-      head_url: "../babs.png",
+      head_url: "https://emoji.slack-edge.com/T02GDU01L/chill/7c582ab11138db5e.png",
       taunt: "Catch these hands",
   };
 
