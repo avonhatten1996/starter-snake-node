@@ -158,9 +158,19 @@ function survivalMove(me) {
   let x = me.body[0].x;
   let y = me.body[0].y;
 
-  try {
-    board[x+1];
-  } catch (err) {
+  // try {
+  //   board[x+1];
+  // } catch (err) {
+  //   if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
+  //     return 'down';
+  //   } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y+1 }]})) {
+  //     return 'up';
+  //   } else {
+  //     return 'left';
+  //   }
+  // }
+
+  if (x+1 > board.length){
     if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
       return 'down';
     } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y+1 }]})) {
