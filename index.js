@@ -143,7 +143,7 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
-  if(x > board.length || x <= 0 || y > board.length || y <= 0) {
+  if(x > board.length || x < 0 || y > board.length || y < 0) {
     return false
   }
 
