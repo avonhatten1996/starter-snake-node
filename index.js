@@ -81,9 +81,9 @@ function getFoodDirection(request) {
 
 function generateNextMove(request) {
   food = getCloseFood()
-  if (food !== null) {
-    return getFoodDirection(food, request);
-  }
+  // if (food !== null) {
+  //  return getFoodDirection(food, request);
+  // }
 
   if (lastMove === 'up') {
     return 'right';
