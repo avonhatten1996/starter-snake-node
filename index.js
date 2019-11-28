@@ -105,7 +105,23 @@ function circle() {
   return 'down';
 }
 
-function generateNextMove(me, food) {
+function getCloseFood(request) {
+  const my_snake_x = request.you.body.x;
+  const my_snake_y = request.you.body.y;
+
+  menu.forEach((food) => {
+    x_diff = Math.abs(food.coordinates.x - my_snake_x);
+    y_diff = Math.abs(food.coordinates.y - my_snake_y);
+    if( x_diff < 2 || y_diff < 2) {
+      return food
+    }
+  })
+
+  return null;
+}
+
+function generateNextMove(request) {
+  food = getCloseFood(request);
   return circle();
 
   /*
@@ -124,7 +140,7 @@ app.post('/move', (request, response) => {
   // instantiateBoard();
   // populateBoard(request.body.board, request.body.you);
 
-  const nextMove = generateNextMove();
+  const nextMove = generateNextMove(request);
 
   // Response data
   const data = {
