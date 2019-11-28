@@ -120,8 +120,35 @@ function getCloseFood(request) {
   return null;
 }
 
+function getFoodDirection(request) {
+  const my_snake_x = request.you.body[0].x;
+  const my_snake_y = request.you.body[0].y;
+
+  x_diff = food.coordinates.x - my_snake_x;
+  y_diff = food.coordinates.y - my_snake_y;
+
+  if (x_diff === 1) {
+    return 'right';
+  }
+
+  if (x_diff === -1) {
+    return 'left';
+  }
+
+  if (y_diff === 1) {
+    return 'up';
+  }
+
+  if (y_diff === -1) {
+    return 'down';
+  }
+}
+
 function generateNextMove(request) {
   food = getCloseFood(request.body);
+  if (food !== null) {
+    return getFoodDirection(food, request.body);
+  }
   return circle();
 
   /*
