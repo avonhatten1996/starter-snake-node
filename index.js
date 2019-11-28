@@ -85,23 +85,25 @@ function generateNextMove() {
   //  return getFoodDirection(food, request);
   // }
 
-  if (lastMove === 'up') {
-    return 'right';
-  }
+  return 'down'
 
-  if (lastMove === 'right') {
-    return 'down';
-  }
+  // if (lastMove === 'up') {
+  //   return 'right';
+  // }
 
-  if (lastMove === 'down') {
-    return 'left'
-  }
+  // if (lastMove === 'right') {
+  //   return 'down';
+  // }
 
-  if (lastMove === 'left') {
-    return 'up';
-  }
+  // if (lastMove === 'down') {
+  //   return 'left'
+  // }
 
-  return 'down';
+  // if (lastMove === 'left') {
+  //   return 'up';
+  // }
+
+  // return 'down';
 }
 
 function updateFood(request) {
