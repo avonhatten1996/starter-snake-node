@@ -70,7 +70,10 @@ function foosTaunt() {
 function getMyMove() {
   move_arr = ['up','down','left','right']
   index = getRandomInt(4);
-  return move_arr[index];
+  retval = move_arr[index];
+  console.log('HERE!!!');
+  console.log(retval);
+  return retval;
 }
 
 // function updateAndGetHistory(reqBody) {
