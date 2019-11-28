@@ -113,7 +113,7 @@ function getCloseFood(request) {
   menu.forEach((food) => {
     x_diff = Math.abs(food.coordinates.x - my_snake_x);
     y_diff = Math.abs(food.coordinates.y - my_snake_y);
-    if( x_diff < 2 || y_diff < 2) {
+    if( x_diff <= 3 || y_diff <= 3) {
       retval = food;
     }
   })
