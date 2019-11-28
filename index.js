@@ -143,7 +143,7 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
-  if(x > board.length || x < 1 || y > board.length || y < 1) {
+  if(x > board.length || x <= 0 || y > board.length || y <= 0) {
     return false
   }
 
@@ -178,7 +178,7 @@ function survivalMove(me) {
     }
   }
 
-  if (x <= 0) {
+  if (x === 0) {
     if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up')) {
       return 'up';
     } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
