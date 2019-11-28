@@ -151,11 +151,11 @@ function isMoveSafe(me, move) {
     return false;
   }
 
-  if (x < 0) {
+  if (x < 1) {
     return false;
   }
 
-  if (y < 0) {
+  if (y < 1) {
     return false;
   }
 
