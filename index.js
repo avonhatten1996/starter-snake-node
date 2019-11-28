@@ -151,7 +151,15 @@ function isMoveSafe(me, move) {
     return false;
   }
 
+  if (x < 0) {
+    return false;
+  }
+
   if (y < 0) {
+    return false;
+  }
+
+  if (y > 10) {
     return false;
   }
 
@@ -172,6 +180,14 @@ function survivalMove(me) {
 
   if (y === 0) {
     return 'left';
+  }
+
+  if (x === 0) {
+    return 'down';
+  }
+
+  if (y === 0) {
+    return 'right';
   }
   // if (x+1 > board.length){
   //   if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
