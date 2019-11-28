@@ -163,9 +163,9 @@ function survivalMove(me) {
   let y = me.body[0].y;
 
   if (x === 10) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
+    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
       return 'down';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y+1 }]})) {
+    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up')) {
       return 'up';
     } else {
       return 'left';
@@ -173,9 +173,9 @@ function survivalMove(me) {
   }
 
   if (y === 0) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x+1, "y": y }]})) {
+    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
       return 'right';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x-1, "y": y }]})) {
+    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left')) {
       return 'left';
     } else {
       return 'down';
@@ -183,9 +183,9 @@ function survivalMove(me) {
   }
 
   if (x === 0) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
+    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
       return 'down';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y+1 }]})) {
+    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up')) {
       return 'up';
     } else {
       return 'right';
@@ -193,9 +193,9 @@ function survivalMove(me) {
   }
 
   if (y === 10) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x+1, "y": y }]})) {
+    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
       return 'right';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x-1, "y": y }]})) {
+    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left')) {
       return 'left';
     } else {
       return 'up';
