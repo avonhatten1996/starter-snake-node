@@ -2,16 +2,12 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const logger = require('morgan')
 const app = express()
-const Food = require('./food.js')
 const {
   fallbackHandler,
   notFoundHandler,
   genericErrorHandler,
   poweredByHandler
 } = require('./handlers.js')
-
-const board = null;
-let menu = [];
 
 // For deployment to Heroku, the port needs to be set using ENV, so
 // we check for the port number in process.env
@@ -24,17 +20,10 @@ app.use(bodyParser.json())
 app.use(poweredByHandler)
 
 // --- SNAKE LOGIC GOES BELOW THIS LINE ---
-function updateFood(request) {
-  request.board.food.foreach((food) => {
-    food = new Food(food.x, food.y)
-    menu.push(food);
-  })
-}
 
 // Handle POST request to '/start'
 app.post('/start', (request, response) => {
   // NOTE: Do something here to start the game
-  updateFood(request);
 
   // Response data
   const data = {
@@ -46,7 +35,6 @@ app.post('/start', (request, response) => {
   return response.json(data)
 })
 
-/*
 let board = null;
 function instantiateBoard() {
   board = new Array();
@@ -82,7 +70,6 @@ function populateBoard(thisBoard, me) {
 
   return;
 }
-*/
 
 let lastMove = 'left';
 function circle() {
@@ -105,71 +92,96 @@ function circle() {
   return 'down';
 }
 
-function getCloseFood(request) {
-  const my_snake_x = request.you.body[0].x;
-  const my_snake_y = request.you.body[0].y;
-  const retval = null;
+function generateNextMove(me, foods) {
+  // return circle();
 
-  menu.forEach((food) => {
-    x_diff = Math.abs(food.coordinates.x - my_snake_x);
-    y_diff = Math.abs(food.coordinates.y - my_snake_y);
-    if( x_diff <= 3 || y_diff <= 3) {
-      retval = food;
-      break;
+  // find shortest path to a food
+  headX = me.body[0].x
+  headY = me.body[0].y
+
+  let x, y;
+  let minDistance = null;
+
+  for (food of foods) {
+    const thisDistance = Math.abs(headX - food.x) + Math.abs(headY - food.y);
+
+    if (minDistance === null || thisDistance < minDistance) {
+      minDistance = thisDistance;
+      x = food.x;
+      y = food.y;
     }
-  })
-
-  return retval;
-}
-
-function getFoodDirection(food, request) {
-  const my_snake_x = request.you.body[0].x;
-  const my_snake_y = request.you.body[0].y;
-
-  x_diff = food.coordinates.x - my_snake_x;
-  y_diff = food.coordinates.y - my_snake_y;
-
-  if (x_diff > 0 && x_diff <= 3) {
-    return 'right';
   }
 
-  if (x_diff < 0 && x_diff >= -3) {
+  // move in the direction of closest food
+  // @TODO handle if it's in opposite direction
+  if (x < headX) {
     return 'left';
   }
 
-  if (y_diff > 0 && y_diff <= 3) {
-    return 'up';
+  if (x > headX) {
+    return 'right';
   }
 
-  if (y_diff < 0 && y_diff >= -3) {
+  if (y > headY) {
     return 'down';
   }
+
+  return 'up';
 }
 
-function generateNextMove(request) {
-  food = getCloseFood(request.body);
-  if (food !== null) {
-    return getFoodDirection(food, request.body);
+function isMoveSafe(me, move) {
+  let x = me.body[0].x;
+  let y = me.body[0].y;
+
+  if (move === 'right') {
+    x += 1;
+  } else if (move === 'left') {
+    x -= 1;
+  } else if (move === 'up') {
+    y -= 1;
+  } else {
+    y += 1;
   }
-  return circle();
 
-  /*
-  // find shortest valid path to a food
-  head_x = me.body[0].x
-  head_y = me.body[0].y
+  if (board[x][y] != '0' && board[x][y] != 'food') {
+    return false;
+  }
 
-  let min_food_x;
-  let min_food_y;
-  */
+  return true;
+}
+
+function survivalMove(me) {
+  let x = me.body[0].x;
+  let y = me.body[0].y;
+
+  if (board[x+1][y] === '0') {
+    return 'right';
+  }
+
+  if (board[x-1][y] === '0') {
+    return 'left';
+  }
+
+  if (board[x][y+1] === '0') {
+    return 'down';
+  }
+
+  return 'up';
 }
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
   // instantiate every turn. Previous state doesn't matter
-  // instantiateBoard();
-  // populateBoard(request.body.board, request.body.you);
+  instantiateBoard();
+  populateBoard(request.body.board, request.body.you);
 
-  const nextMove = generateNextMove(request);
+  // const nextMove = generateNextMove();
+  let nextMove = generateNextMove(request.body.you, request.body.board.food);
+
+  if (!isMoveSafe(request.body.you, nextMove)) {
+    // forget the food, just survive!
+    nextMove = survivalMove(request.body.you);
+  }
 
   // Response data
   const data = {
@@ -200,137 +212,3 @@ app.use(genericErrorHandler)
 app.listen(app.get('port'), () => {
   console.log('Server listening on port %s', app.get('port'))
 })
-
-// //
-
-// // For deployment to Heroku, the port needs to be set using ENV, so
-// // we check for the port number in process.env
-// app.set('port', (process.env.PORT || 9001))
-
-// app.enable('verbose errors')
-
-// app.use(logger('dev'))
-// app.use(bodyParser.json())
-// app.use(poweredByHandler)
-
-// // --- SNAKE LOGIC GOES BELOW THIS LINE ---
-
-// // Handle POST request to '/start'
-// app.post('/start', (request, response) => {
-//   // NOTE: Do something here to start the game
-
-//   // Response data
-//   const data = {
-//     color: '#DFFF00',
-//   }
-
-//   nextMove = 'left';
-
-//   return response.json(data)
-// })
-
-// let lastMove = 'left';
-
-// // function getCloseFood(request) {
-// //   const my_snake_x = request.you.body.x;
-// //   const my_snake_y = request.you.body.y;
-
-// //   menu.forEach((food) => {
-// //     x_diff = Math.abs(food.coordinates.x - my_snake_x);
-// //     y_diff = Math.abs(food.coordinates.y - my_snake_y);
-// //     if( x_diff < 2 || y_diff < 2) {
-// //       return food
-// //     }
-// //   })
-
-// //   return null;
-// // }
-
-// // function getFoodDirection(request) {
-// //   const my_snake_x = request.you.body.x;
-// //   const my_snake_y = request.you.body.y;
-
-// //   x_diff = food.coordinates.x - my_snake_x;
-// //   y_diff = food.coordinates.y - my_snake_y;
-
-// //   if (x_diff === 1) {
-// //     return 'right';
-// //   }
-
-// //   if (x_diff === -1) {
-// //     return 'left';
-// //   }
-
-// //   if (y_diff === 1) {
-// //     return 'up';
-// //   }
-
-// //   if (y_diff === -1) {
-// //     return 'down';
-// //   }
-// // }
-
-// function generateNextMove() {
-//   // food = getCloseFood()
-//   // if (food !== null) {
-//   //  return getFoodDirection(food, request);
-//   // }
-
-//   return 'down'
-
-//   // if (lastMove === 'up') {
-//   //   return 'right';
-//   // }
-
-//   // if (lastMove === 'right') {
-//   //   return 'down';
-//   // }
-
-//   // if (lastMove === 'down') {
-//   //   return 'left'
-//   // }
-
-//   // if (lastMove === 'left') {
-//   //   return 'up';
-//   // }
-
-//   // return 'down';
-// }
-
-
-// // Handle POST request to '/move'
-// app.post('/move', (request, response) => {
-//   // NOTE: Do something here to generate your move
-//   // updateFood(request);
-
-//   const nextMove = generateNextMove();
-
-//   // Response data
-//   const data = {
-//     move: nextMove, // one of: ['up','down','left','right']
-//   }
-
-//   lastMove = nextMove;
-
-//   return response.json(data)
-// })
-
-// app.post('/end', (request, response) => {
-//   // NOTE: Any cleanup when a game is complete.
-//   return response.json({})
-// })
-
-// app.post('/ping', (request, response) => {
-//   // Used for checking if this snake is still alive.
-//   return response.json({});
-// })
-
-// // --- SNAKE LOGIC GOES ABOVE THIS LINE ---
-
-// app.use('*', fallbackHandler)
-// app.use(notFoundHandler)
-// app.use(genericErrorHandler)
-
-// app.listen(app.get('port'), () => {
-//   console.log('Server listening on port %s', app.get('port'))
-// })
