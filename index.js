@@ -121,7 +121,7 @@ function getCloseFood(request) {
 }
 
 function generateNextMove(request) {
-  food = getCloseFood(request);
+  food = getCloseFood(request.body);
   return circle();
 
   /*
