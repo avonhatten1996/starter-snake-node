@@ -133,6 +133,10 @@ function isMoveSafe(me, move) {
   let x = me.body[0].x;
   let y = me.body[0].y;
 
+  if (move === 'right' && x === 10) {
+    return false;
+  }
+
   if (move === 'right') {
     x += 1;
   } else if (move === 'left') {
