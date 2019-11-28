@@ -178,7 +178,7 @@ function survivalMove(me) {
     }
   }
 
-  if (x === 0) {
+  if (x <= 0) {
     if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up')) {
       return 'up';
     } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
