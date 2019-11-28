@@ -183,13 +183,14 @@ function survivalMove(me) {
   }
 
   if (x === 0) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
-      return 'down';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up')) {
-      return 'up';
-    } else {
-      return 'right';
-    }
+    return 'up';
+    // if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
+    //   return 'down';
+    // } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up')) {
+    //   return 'up';
+    // } else {
+    //   return 'right';
+    // }
   }
 
   if (y === 10) {
