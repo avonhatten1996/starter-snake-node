@@ -147,12 +147,6 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
-  try {
-    board[x][y];
-  } catch (err) {
-    return false;
-  }
-
   if (board[x][y] != '0' && board[x][y] != 'food') {
     return false;
   }
@@ -163,6 +157,18 @@ function isMoveSafe(me, move) {
 function survivalMove(me) {
   let x = me.body[0].x;
   let y = me.body[0].y;
+
+  try {
+    board[x+1];
+  } catch (err) {
+    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
+      return 'down';
+    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y+1 }]})) {
+      return 'up';
+    } else {
+      return 'left';
+    }
+  }
 
   if (board[x+1][y] === '0') {
     return 'right';
