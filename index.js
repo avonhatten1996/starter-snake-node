@@ -143,7 +143,9 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
-  if (x > 9) {
+  try {
+    board[x][y];
+  } catch (err) {
     return false;
   }
 
