@@ -79,7 +79,7 @@ function getFoodDirection(request) {
   }
 }
 
-function generateNextMove(request) {
+function generateNextMove() {
   // food = getCloseFood()
   // if (food !== null) {
   //  return getFoodDirection(food, request);
@@ -117,7 +117,7 @@ app.post('/move', (request, response) => {
   // NOTE: Do something here to generate your move
   // updateFood(request);
 
-  const nextMove = generateNextMove(request);
+  const nextMove = generateNextMove();
 
   // Response data
   const data = {
