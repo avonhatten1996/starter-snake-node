@@ -108,16 +108,17 @@ function circle() {
 function getCloseFood(request) {
   const my_snake_x = request.you.body[0].x;
   const my_snake_y = request.you.body[0].y;
+  retval = null;
 
   menu.forEach((food) => {
     x_diff = Math.abs(food.coordinates.x - my_snake_x);
     y_diff = Math.abs(food.coordinates.y - my_snake_y);
     if( x_diff < 2 || y_diff < 2) {
-      return food
+      retval = food;
     }
   })
 
-  return null;
+  return retval;
 }
 
 function getFoodDirection(request) {
