@@ -147,6 +147,14 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
+  if (x > 10) {
+    return 'down';
+  }
+
+  if (y < 0) {
+    return 'left';
+  }
+
   if (board[x][y] != '0' && board[x][y] != 'food') {
     return false;
   }
@@ -160,6 +168,10 @@ function survivalMove(me) {
 
   if (x === 10) {
     return 'down';
+  }
+
+  if (y === 0) {
+    return 'left';
   }
   // if (x+1 > board.length){
   //   if(isMoveSafe({"body": [{ "x": x, "y": y }]}, {"body": [{ "x": x, "y": y-1 }]})) {
