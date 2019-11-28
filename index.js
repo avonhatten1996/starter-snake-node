@@ -115,6 +115,7 @@ function getCloseFood(request) {
     y_diff = Math.abs(food.coordinates.y - my_snake_y);
     if( x_diff <= 3 || y_diff <= 3) {
       retval = food;
+      break;
     }
   })
 
