@@ -27,10 +27,10 @@ app.post('/start', (request, response) => {
   // numSnakes++;
   // Response data
   var returnData = {
-      color: "#DFFF00",
+      color: "#00CC66",
       name: "Max Power",
-      head_url: "../babs.png", // optional, but encouraged!
-      taunt: "Catch these hands", // optional, but encouraged!
+      head_url: "../babs.png",
+      taunt: "Catch these hands",
   };
 
   return response.json(returnData)
