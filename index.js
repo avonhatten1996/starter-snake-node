@@ -2,7 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const logger = require('morgan')
 const app = express()
-const Food = require('food')
+const Food = require('./food')
 const {
   fallbackHandler,
   notFoundHandler,
@@ -10,7 +10,7 @@ const {
   poweredByHandler
 } = require('./handlers.js')
 
-let menu = [];
+// let menu = [];
 
 // For deployment to Heroku, the port needs to be set using ENV, so
 // we check for the port number in process.env
@@ -40,44 +40,44 @@ app.post('/start', (request, response) => {
 
 let lastMove = 'left';
 
-function getCloseFood(request) {
-  const my_snake_x = request.you.body.x;
-  const my_snake_y = request.you.body.y;
+// function getCloseFood(request) {
+//   const my_snake_x = request.you.body.x;
+//   const my_snake_y = request.you.body.y;
 
-  menu.forEach((food) => {
-    x_diff = Math.abs(food.coordinates.x - my_snake_x);
-    y_diff = Math.abs(food.coordinates.y - my_snake_y);
-    if( x_diff < 2 || y_diff < 2) {
-      return food
-    }
-  })
+//   menu.forEach((food) => {
+//     x_diff = Math.abs(food.coordinates.x - my_snake_x);
+//     y_diff = Math.abs(food.coordinates.y - my_snake_y);
+//     if( x_diff < 2 || y_diff < 2) {
+//       return food
+//     }
+//   })
 
-  return null;
-}
+//   return null;
+// }
 
-function getFoodDirection(request) {
-  const my_snake_x = request.you.body.x;
-  const my_snake_y = request.you.body.y;
+// function getFoodDirection(request) {
+//   const my_snake_x = request.you.body.x;
+//   const my_snake_y = request.you.body.y;
 
-  x_diff = food.coordinates.x - my_snake_x;
-  y_diff = food.coordinates.y - my_snake_y;
+//   x_diff = food.coordinates.x - my_snake_x;
+//   y_diff = food.coordinates.y - my_snake_y;
 
-  if (x_diff === 1) {
-    return 'right';
-  }
+//   if (x_diff === 1) {
+//     return 'right';
+//   }
 
-  if (x_diff === -1) {
-    return 'left';
-  }
+//   if (x_diff === -1) {
+//     return 'left';
+//   }
 
-  if (y_diff === 1) {
-    return 'up';
-  }
+//   if (y_diff === 1) {
+//     return 'up';
+//   }
 
-  if (y_diff === -1) {
-    return 'down';
-  }
-}
+//   if (y_diff === -1) {
+//     return 'down';
+//   }
+// }
 
 function generateNextMove() {
   // food = getCloseFood()
