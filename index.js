@@ -11,6 +11,7 @@ const {
 } = require('./handlers.js')
 
 const board = null;
+let menu = [];
 
 // For deployment to Heroku, the port needs to be set using ENV, so
 // we check for the port number in process.env
@@ -23,10 +24,17 @@ app.use(bodyParser.json())
 app.use(poweredByHandler)
 
 // --- SNAKE LOGIC GOES BELOW THIS LINE ---
+function updateFood(request) {
+  request.board.food.foreach((food) => {
+    food = new Food(food.x, food.y)
+    menu.push(food);
+  })
+}
 
 // Handle POST request to '/start'
 app.post('/start', (request, response) => {
   // NOTE: Do something here to start the game
+  updateFood(request);
 
   // Response data
   const data = {
@@ -148,19 +156,7 @@ app.listen(app.get('port'), () => {
   console.log('Server listening on port %s', app.get('port'))
 })
 
-// const bodyParser = require('body-parser')
-// const express = require('express')
-// const logger = require('morgan')
-// const app = express()
-// const Food = require('food')
-// const {
-//   fallbackHandler,
-//   notFoundHandler,
-//   genericErrorHandler,
-//   poweredByHandler
-// } = require('./handlers.js')
-
-// // let menu = [];
+// //
 
 // // For deployment to Heroku, the port needs to be set using ENV, so
 // // we check for the port number in process.env
@@ -254,13 +250,6 @@ app.listen(app.get('port'), () => {
 //   // }
 
 //   // return 'down';
-// }
-
-// function updateFood(request) {
-//   request.board.food.foreach((food) => {
-//     food = new Food(food.x, food.y)
-//     menu.push(food);
-//   })
 // }
 
 
