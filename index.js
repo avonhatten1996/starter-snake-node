@@ -20,17 +20,20 @@ app.use(bodyParser.json())
 app.use(poweredByHandler)
 
 // --- SNAKE LOGIC GOES BELOW THIS LINE ---
+// numSnakes = 0;
 
 // Handle POST request to '/start'
 app.post('/start', (request, response) => {
-  // NOTE: Do something here to start the game
-
+  // numSnakes++;
   // Response data
-  const data = {
-    color: '#DFFF00',
-  }
+  var returnData = {
+      color: "#DFFF00",
+      name: "Max Power",
+      head_url: "../babs.png", // optional, but encouraged!
+      taunt: "Catch these hands", // optional, but encouraged!
+  };
 
-  return response.json(data)
+  return response.json(returnData)
 })
 
 // Handle POST request to '/move'
@@ -39,7 +42,8 @@ app.post('/move', (request, response) => {
 
   // Response data
   const data = {
-    move: 'up', // one of: ['up','down','left','right']
+    move: 'left', // one of: ['up','down','left','right']
+    taunt: 'You scum'
   }
 
   return response.json(data)
