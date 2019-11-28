@@ -143,7 +143,7 @@ function isMoveSafe(me, move) {
     y += 1;
   }
 
-  if (x > 9 || x < 0 || y > 10 || y < 0) {
+  if (x > 9) {
     return false;
   }
 
