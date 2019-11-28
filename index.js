@@ -127,19 +127,19 @@ function getFoodDirection(request) {
   x_diff = food.coordinates.x - my_snake_x;
   y_diff = food.coordinates.y - my_snake_y;
 
-  if (x_diff === 1) {
+  if (x_diff > 0 && x_diff <= 3) {
     return 'right';
   }
 
-  if (x_diff === -1) {
+  if (x_diff < 0 && x_diff >= -3) {
     return 'left';
   }
 
-  if (y_diff === 1) {
+  if (y_diff > 0 && y_diff <= 3) {
     return 'up';
   }
 
-  if (y_diff === -1) {
+  if (y_diff < 0 && y_diff >= -3) {
     return 'down';
   }
 }
