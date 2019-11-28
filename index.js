@@ -106,8 +106,8 @@ function circle() {
 }
 
 function getCloseFood(request) {
-  const my_snake_x = 2 // request.you.body.x;
-  const my_snake_y = 2 //request.you.body.y;
+  const my_snake_x = request.you.body[0].x;
+  const my_snake_y = request.you.body[0].y;
 
   // menu.forEach((food) => {
   //   x_diff = Math.abs(food.coordinates.x - my_snake_x);
