@@ -2,7 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const logger = require('morgan')
 const app = express()
-const Food = require('food')
+const Food = require('./food.js')
 const {
   fallbackHandler,
   notFoundHandler,

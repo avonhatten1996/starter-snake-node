@@ -1,5 +1,6 @@
 'use strict';
-module.exports = class Food {
+
+class Food {
   constructor(x_position, y_position) {
     this.x = x_position;
     this.y = y_position;
@@ -9,3 +10,5 @@ module.exports = class Food {
     return { x: this.x, y: this.y };
   }
 }
+
+module.exports = Food
