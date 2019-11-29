@@ -173,15 +173,15 @@ function optimise_directions(me, directions) {
           return directions[1]
         }
       }
-    } else if (direction === 'down') {
+    } else if (direction === 'up') {
       for (j = y-1; j >= 0; j-=1) {
-        if (board[x][j] = 'me') {
+        if (board[x][j] === 'me') {
           return directions[1]
         }
       }
     } else {
       for (j = y+1; j <= 10; j+=1) {
-        if( board[x][j] = 'me') {
+        if( board[x][j] === 'me') {
           return directions[1]
         }
       }
