@@ -157,9 +157,9 @@ function isMoveSafe(me, move) {
 function optimise_directions(me, directions) {
   let x = me.body[0].x;
   let y = me.body[0].y;
+  console.log("HERE")
 
   if (directions.length > 1) {
-    // First direction
     direction = directions[0]
     if (direction === 'left') {
       for (i = x-1; i >= 0; i-=1) {
