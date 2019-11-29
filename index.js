@@ -233,7 +233,7 @@ function survivalMove(me) {
     directions.push('up');
   }
 
-  direction = optimise_directions(directions);
+  direction = optimise_directions(me, directions);
   return direction;
 }
 
