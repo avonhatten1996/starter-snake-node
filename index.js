@@ -202,6 +202,7 @@ function optimise_directions(me, directions) {
 }
 
 function survivalMove(me) {
+  // SAFETY
   // let directions = [];
   // let direction = 'up';
   let x = me.body[0].x;
