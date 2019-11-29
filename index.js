@@ -169,31 +169,33 @@ function optimise_directions(me, directions) {
       for (i = x-1; i >= 0; i-=1) {
         if (board[i][y] === 'me') {
           console.log("Saw Me")
-          return directions[1]
+          return directions[0]
         }
       }
     } else if (direction === 'right') {
       for (i = x+1; i <= 10; i+=1) {
         if (board[i][y] === 'me') {
           console.log("Saw Me")
-          return directions[1]
+          return directions[0]
         }
       }
     } else if (direction === 'up') {
       for (j = y-1; j >= 0; j-=1) {
         if (board[x][j] === 'me') {
           console.log("Saw Me")
-          return directions[1]
+          return directions[0]
         }
       }
     } else {
       for (j = y+1; j <= 10; j+=1) {
         if( board[x][j] === 'me') {
           console.log("Saw Me")
-          return directions[1]
+          return directions[0]
         }
       }
     }
+
+    return direction[1];
   }
 
   return directions[0];
