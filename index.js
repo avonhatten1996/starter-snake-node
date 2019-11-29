@@ -162,6 +162,9 @@ function optimise_directions(me, directions) {
   if (directions.length > 1) {
     console.log("HERE2")
     direction = directions[0]
+    console.log(direction)
+    console.log(board)
+
     if (direction === 'left') {
       for (i = x-1; i >= 0; i-=1) {
         if (board[i][y] === 'me') {
