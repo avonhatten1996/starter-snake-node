@@ -178,8 +178,7 @@ function survivalMove(me) {
       directions.push('left');
     }
 
-    direction = optimise_directions(directions);
-    return direction;
+    return directions[0];
   }
 
   if (x === 0) {
@@ -191,8 +190,7 @@ function survivalMove(me) {
       directions.push('right');
     }
 
-    direction = optimise_directions(directions);
-    return direction;
+    return directions[0];
   }
 
   if (y === 0) {
@@ -204,8 +202,7 @@ function survivalMove(me) {
       directions.push('down');
     }
 
-    direction = optimise_directions(directions);
-    return direction;
+    return directions[0];
   }
 
   if (y === 10) {
@@ -217,8 +214,7 @@ function survivalMove(me) {
       directions.push('up');
     }
 
-    direction = optimise_directions(directions);
-    return direction;
+    return directions[0];
   }
 
   if (board[x+1][y] === '0') {
