@@ -207,7 +207,7 @@ function survivalMove(me) {
     } else if (move_left_is_safe) {
       directions.push('left');
     } else {
-      direction.push('up');
+      directions.push('up');
     }
 
     return directions[0];
