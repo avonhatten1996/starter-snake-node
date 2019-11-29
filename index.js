@@ -155,6 +155,7 @@ function isMoveSafe(me, move) {
 }
 
 function survivalMove(me) {
+  let directions = [];
   let direction = 'up';
   let x = me.body[0].x;
   let y = me.body[0].y;
@@ -166,50 +167,50 @@ function survivalMove(me) {
 
   if (x === 10) {
     if (move_down_is_safe) {
-      direction = 'down';
+      directions.push('down');
     } else if (move_up_is_safe) {
-      direction = 'up';
+      directions.push('up');
     } else {
-      direction = 'left';
+      directions.push('left');
     }
 
-    return direction;
+    return directions[0];
   }
 
   if (x === 0) {
     if (move_up_is_safe) {
-      direction = 'up';
+      directions.push('up');
     } else if (move_down_is_safe) {
-      direction = 'down';
+      directions.push('down');
     } else {
-      direction = 'right';
+      direction.push('right');
     }
 
-    return direction;
+    return directions[0];
   }
 
   if (y === 0) {
     if (isMoveSafe(me, 'right')) {
-      direction = 'right';
+      direction.push('right');
     } else if (move_left_is_safe) {
-      direction = 'left';
+      directions.push('left');
     } else {
-      direction = 'down';
+      directions.push('down');
     }
 
-    return direction;
+    return directions[0];
   }
 
   if (y === 10) {
     if (isMoveSafe(me, 'right')) {
-      direction = 'right';
+      directions.push('right');
     } else if (move_left_is_safe) {
-      direction = 'left';
+      directions.push('left');
     } else {
-      direction = 'up';
+      direction.push('up');
     }
 
-    return direction;
+    return directions[0];
   }
 
   if (board[x+1][y] === '0') {
