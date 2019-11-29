@@ -161,7 +161,7 @@ function optimise_directions(me, directions) {
 
   if (directions.length > 1) {
     console.log("HERE2")
-    direction = directions[0]
+    direction = directions[1]
     console.log(direction)
     console.log(board)
 
