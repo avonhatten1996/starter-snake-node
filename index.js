@@ -163,25 +163,25 @@ function optimise_directions(me, directions) {
     direction = directions[0]
     if (direction === 'left') {
       for (i = x-1; i >= 0; i-=1) {
-        if(board[i][y] = 'me') {
+        if (board[i][y] === 'me') {
           return directions[1]
         }
       }
     } else if (direction === 'right') {
       for (i = x+1; i <= 10; i+=1) {
-        if(board[i][y] = 'me') {
+        if (board[i][y] === 'me') {
           return directions[1]
         }
       }
     } else if (direction === 'up') {
       for (j = y-1; j >= 0; j-=1) {
-        if(board[x][j] = 'me') {
+        if (board[x][j] = 'me') {
           return directions[1]
         }
       }
     } else {
       for (j = y-1; j <= 10; j+=1) {
-        if(board[x][j] = 'me') {
+        if( board[x][j] = 'me') {
           return directions[1]
         }
       }
