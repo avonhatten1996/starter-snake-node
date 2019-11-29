@@ -158,11 +158,6 @@ function survivalMove(me) {
   let x = me.body[0].x;
   let y = me.body[0].y;
 
-  const safe_to_move_down;
-  const safe_to_move_up;
-  const safe_to_move_right;
-  const safe_to_move_left;
-
   if (x === 10) {
     if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down')) {
       return 'down';
