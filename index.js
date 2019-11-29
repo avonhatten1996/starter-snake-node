@@ -160,7 +160,7 @@ function survivalMove(me) {
 
   const move_up_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up');
   const move_down_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down');
-  // const move_right_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right');
+  const move_right_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right');
   // const move_left_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left');
 
   if (x === 10) {
@@ -184,7 +184,7 @@ function survivalMove(me) {
   }
 
   if (y === 0) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
+    if (move_right_is_safe) {
       return 'right';
     } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left')) {
       return 'left';
@@ -194,7 +194,7 @@ function survivalMove(me) {
   }
 
   if (y === 10) {
-    if(isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
+    if(move_right_is_safe) {
       return 'right';
     } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left')) {
       return 'left';
