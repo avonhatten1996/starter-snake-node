@@ -155,6 +155,7 @@ function isMoveSafe(me, move) {
 }
 
 function survivalMove(me) {
+  let direction = 'up';
   let x = me.body[0].x;
   let y = me.body[0].y;
 
@@ -165,57 +166,57 @@ function survivalMove(me) {
 
   if (x === 10) {
     if (move_down_is_safe) {
-      return 'down';
+      direction = 'down';
     } else if (move_up_is_safe) {
-      return 'up';
+      direction = 'up';
     } else {
-      return 'left';
+      direction = 'left';
     }
   }
 
-    if (x === 0) {
+  if (x === 0) {
     if (move_up_is_safe) {
-      return 'up';
+      direction = 'up';
     } else if (move_down_is_safe) {
-      return 'down';
+      direction = 'down';
     } else {
-      return 'right';
+      direction = 'right';
     }
   }
 
   if (y === 0) {
     if (isMoveSafe(me, 'right')) {
-      return 'right';
+      direction = 'right';
     } else if (move_left_is_safe) {
-      return 'left';
+      direction = 'left';
     } else {
-      return 'down';
+      direction = 'down';
     }
   }
 
   if (y === 10) {
     if (isMoveSafe(me, 'right')) {
-      return 'right';
+      direction = 'right';
     } else if (move_left_is_safe) {
-      return 'left';
+      direction = 'left';
     } else {
-      return 'up';
+      direction = 'up';
     }
   }
 
   if (board[x+1][y] === '0') {
-    return 'right';
+    direction = 'right';
   }
 
   if (board[x-1][y] === '0') {
-    return 'left';
+    direction = 'left';
   }
 
   if (board[x][y+1] === '0') {
-    return 'down';
+    direction = 'down';
   }
 
-  return 'up';
+  return direction;
 }
 
 // Handle POST request to '/move'
