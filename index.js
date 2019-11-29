@@ -180,7 +180,7 @@ function optimise_directions(me, directions) {
         }
       }
     } else {
-      for (j = y-1; j <= 10; j+=1) {
+      for (j = y+1; j <= 10; j+=1) {
         if( board[x][j] = 'me') {
           return directions[1]
         }
