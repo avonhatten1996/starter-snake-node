@@ -160,7 +160,7 @@ function survivalMove(me) {
 
   const move_up_is_safe = isMoveSafe(me, 'up');
   const move_down_is_safe = isMoveSafe(me, 'down');
-  const move_right_is_safe; // = isMoveSafe(me, 'right');
+  // const move_right_is_safe = isMoveSafe(me, 'right');
   const move_left_is_safe = isMoveSafe(me, 'left');
 
   if (x === 10) {
