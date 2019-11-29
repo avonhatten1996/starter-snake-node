@@ -184,7 +184,7 @@ function survivalMove(me) {
   }
 
   if (y === 0) {
-    if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
+    if (isMoveSafe(me, 'right')) {
       return 'right';
     } else if (move_left_is_safe) {
       return 'left';
@@ -194,7 +194,7 @@ function survivalMove(me) {
   }
 
   if (y === 10) {
-    if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
+    if (isMoveSafe(me, 'right')) {
       return 'right';
     } else if (move_left_is_safe) {
       return 'left';
