@@ -173,7 +173,7 @@ function optimise_directions(me, directions) {
           return directions[1]
         }
       }
-    } else if (direction === 'up') {
+    } else if (direction === 'down') {
       for (j = y-1; j >= 0; j-=1) {
         if (board[x][j] = 'me') {
           return directions[1]
