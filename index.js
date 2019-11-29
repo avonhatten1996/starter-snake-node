@@ -214,22 +214,22 @@ function survivalMove(me) {
   }
 
   if (board[x+1][y] === '0') {
-    direction = 'right';
+    directions.push('right');
   }
 
   if (board[x-1][y] === '0') {
-    direction = 'left';
+    directions.push('left');
   }
 
   if (board[x][y+1] === '0') {
-    direction = 'up';
+    directions.push('down');
   }
 
   if (board[x][y-1] === '0') {
-    direction = 'down';
+    directions.push('up');
   }
 
-  return direction;
+  return directions[0];
 }
 
 // Handle POST request to '/move'
