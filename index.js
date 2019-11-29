@@ -160,11 +160,11 @@ function survivalMove(me) {
 
   const move_up_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'up');
   const move_down_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'down');
-  const move_right_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right');
-  // const move_left_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left');
+  // const move_right_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right');
+  const move_left_is_safe = isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left');
 
   if (x === 10) {
-    if(move_down_is_safe) {
+    if (move_down_is_safe) {
       return 'down';
     } else if (move_up_is_safe) {
       return 'up';
@@ -173,7 +173,7 @@ function survivalMove(me) {
     }
   }
 
-  if (x === 0) {
+    if (x === 0) {
     if (move_up_is_safe) {
       return 'up';
     } else if (move_down_is_safe) {
@@ -184,9 +184,9 @@ function survivalMove(me) {
   }
 
   if (y === 0) {
-    if (move_right_is_safe) {
+    if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
       return 'right';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left')) {
+    } else if (move_left_is_safe) {
       return 'left';
     } else {
       return 'down';
@@ -194,9 +194,9 @@ function survivalMove(me) {
   }
 
   if (y === 10) {
-    if(move_right_is_safe) {
+    if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'right')) {
       return 'right';
-    } else if (isMoveSafe({"body": [{ "x": x, "y": y }]}, 'left')) {
+    } else if (move_left_is_safe) {
       return 'left';
     } else {
       return 'up';
