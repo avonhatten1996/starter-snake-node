@@ -188,7 +188,7 @@ function optimise_directions(me, directions) {
     }
   }
 
-  return directions[1];
+  return directions[0];
 }
 
 function survivalMove(me) {
