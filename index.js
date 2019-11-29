@@ -202,8 +202,8 @@ function optimise_directions(me, directions) {
 }
 
 function survivalMove(me) {
-  let directions = [];
-  let direction = 'up';
+  // let directions = [];
+  // let direction = 'up';
   let x = me.body[0].x;
   let y = me.body[0].y;
 
@@ -214,74 +214,85 @@ function survivalMove(me) {
 
   if (x === 10) {
     if (move_down_is_safe) {
-      directions.push('down');
+      // directions.push('down');
+      return 'down';
     } else if (move_up_is_safe) {
-      directions.push('up');
+      // directions.push('up');
+      return 'up';
     } else {
-      directions.push('left');
+      // directions.push('left');
+      return 'left';
     }
 
-    direction = optimise_directions(me, directions);
-    return direction;
+    // direction = optimise_directions(me, directions);
+    // return direction;
   }
 
   if (x === 0) {
     if (move_up_is_safe) {
-      directions.push('up');
+      return 'up';
+      // directions.push('up');
     } else if (move_down_is_safe) {
-      directions.push('down');
+      // directions.push('down');
+      return 'down';
     } else {
-      directions.push('right');
+      // directions.push('right');
+      return 'right';
     }
 
-    direction = optimise_directions(me, directions);
-    return direction;
+    // direction = optimise_directions(me, directions);
+    // return direction;
   }
 
   if (y === 0) {
     if (isMoveSafe(me, 'right')) {
-      directions.push('right');
+      // directions.push('right');
+      return 'right';
     } else if (move_left_is_safe) {
-      directions.push('left');
+      // directions.push('left');
+      return 'left';
     } else {
-      directions.push('down');
+      // directions.push('down');
+      return 'down';
     }
 
-    direction = optimise_directions(me, directions);
-    return direction;
+    // direction = optimise_directions(me, directions);
+    // return direction;
   }
 
   if (y === 10) {
     if (isMoveSafe(me, 'right')) {
-      directions.push('right');
+      // directions.push('right');
+      return 'right';
     } else if (move_left_is_safe) {
-      directions.push('left');
+      // directions.push('left');
+      return 'left';
     } else {
-      directions.push('up');
+      // directions.push('up');
+      return 'up';
     }
 
-    direction = optimise_directions(me, directions);
-    return direction;
+    // direction = optimise_directions(me, directions);
+    // return direction;
   }
 
   if (board[x+1][y] === '0') {
-    directions.push('right');
+    // directions.push('right');
+    return 'right'
   }
 
   if (board[x-1][y] === '0') {
-    directions.push('left');
+    // directions.push('left');
+    return 'left'
   }
 
   if (board[x][y+1] === '0') {
-    directions.push('down');
+    // directions.push('down');
+    return 'down'
   }
 
-  if (board[x][y-1] === '0') {
-    directions.push('up');
-  }
-
-  direction = optimise_directions(me, directions);
-  return direction;
+  //direction = optimise_directions(me, directions);
+  return 'up';
 }
 
 // Handle POST request to '/move'
