@@ -160,28 +160,33 @@ function optimise_directions(me, directions) {
   console.log("HERE")
 
   if (directions.length > 1) {
+    console.log("HERE2")
     direction = directions[0]
     if (direction === 'left') {
       for (i = x-1; i >= 0; i-=1) {
         if (board[i][y] === 'me') {
+          console.log("Saw Me")
           return directions[1]
         }
       }
     } else if (direction === 'right') {
       for (i = x+1; i <= 10; i+=1) {
         if (board[i][y] === 'me') {
+          console.log("Saw Me")
           return directions[1]
         }
       }
     } else if (direction === 'up') {
       for (j = y-1; j >= 0; j-=1) {
         if (board[x][j] === 'me') {
+          console.log("Saw Me")
           return directions[1]
         }
       }
     } else {
       for (j = y+1; j <= 10; j+=1) {
         if( board[x][j] === 'me') {
+          console.log("Saw Me")
           return directions[1]
         }
       }
