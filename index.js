@@ -222,6 +222,10 @@ function survivalMove(me) {
   }
 
   if (board[x][y+1] === '0') {
+    direction = 'up';
+  }
+
+  if (board[x][y-1] === '0') {
     direction = 'down';
   }
 
