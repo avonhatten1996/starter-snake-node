@@ -172,6 +172,8 @@ function survivalMove(me) {
     } else {
       direction = 'left';
     }
+
+    return direction;
   }
 
   if (x === 0) {
@@ -182,6 +184,8 @@ function survivalMove(me) {
     } else {
       direction = 'right';
     }
+
+    return direction;
   }
 
   if (y === 0) {
@@ -192,6 +196,8 @@ function survivalMove(me) {
     } else {
       direction = 'down';
     }
+
+    return direction;
   }
 
   if (y === 10) {
@@ -202,6 +208,8 @@ function survivalMove(me) {
     } else {
       direction = 'up';
     }
+
+    return direction;
   }
 
   if (board[x+1][y] === '0') {
