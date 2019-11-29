@@ -183,7 +183,7 @@ function survivalMove(me) {
     } else if (move_down_is_safe) {
       directions.push('down');
     } else {
-      direction.push('right');
+      directions.push('right');
     }
 
     return directions[0];
@@ -191,7 +191,7 @@ function survivalMove(me) {
 
   if (y === 0) {
     if (isMoveSafe(me, 'right')) {
-      direction.push('right');
+      directions.push('right');
     } else if (move_left_is_safe) {
       directions.push('left');
     } else {
